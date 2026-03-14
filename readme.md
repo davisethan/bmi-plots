@@ -25,6 +25,14 @@ conda env export > environment.yml
 conda env create -f environment.yml
 ```
 
+## Environment variables
+
+Create `.env` file in root of git repository.
+
+```bash
+DATA_PATH=/path/to/data
+```
+
 ## File format & linting
 
 ```bash
