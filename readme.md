@@ -24,3 +24,19 @@ conda env export > environment.yml
 # Recreate environment
 conda env create -f environment.yml
 ```
+
+## File format & linting
+
+```bash
+# Format files
+ruff format /path/to/software
+
+# Fail if files not formatted
+ruff format --check /path/to/software
+
+# Lint files
+ruff check --fix /path/to/software
+
+# Fail if files not linted
+ruff check /path/to/software
+```
