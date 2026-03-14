@@ -8,6 +8,10 @@ References
 """
 
 import numpy as np
+
+if not hasattr(np, "trapz"):
+    np.trapz = np.trapezoid
+
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import geomstats.backend as gs
