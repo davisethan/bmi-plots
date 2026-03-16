@@ -29,12 +29,12 @@ class LDAPlot:
         self.mean1 = np.array([1, -1])
 
         rng = np.random.default_rng(seed=1)
-        self.n_samples = 200
-        self.X0 = rng.multivariate_normal(self.mean0, self.cov, self.n_samples)
-        self.X1 = rng.multivariate_normal(self.mean1, self.cov, self.n_samples)
+        n_samples = 200
+        self.X0 = rng.multivariate_normal(self.mean0, self.cov, n_samples)
+        self.X1 = rng.multivariate_normal(self.mean1, self.cov, n_samples)
 
         self.X = np.vstack([self.X0, self.X1])
-        self.y = np.hstack([np.zeros(self.n_samples), np.ones(self.n_samples)])
+        self.y = np.hstack([np.zeros(n_samples), np.ones(n_samples)])
 
         self.color0 = "tab:brown"
         self.color1 = "tab:cyan"
