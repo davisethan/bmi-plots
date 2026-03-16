@@ -16,10 +16,9 @@ from sklearn.metrics import accuracy_score
 
 class LogisticRegressionPlot:
     def __init__(self):
-        eigvecs = np.array([
-            [np.cos(np.pi / 4), np.sin(np.pi / 4)],
-            [np.cos(3 * np.pi / 4), np.sin(3 * np.pi / 4)]
-        ])
+        eigvecs = np.array(
+            [[np.cos(np.pi / 4), np.sin(np.pi / 4)], [np.cos(3 * np.pi / 4), np.sin(3 * np.pi / 4)]]
+        )
         eigvals = np.diag([1, 3])
         cov = eigvecs @ eigvals @ eigvecs.T
 
@@ -53,27 +52,48 @@ class LogisticRegressionPlot:
         self.ax.scatter(
             *self.X1.T, color="tab:cyan", label="Class 1", edgecolors="white", linewidths=0.4, zorder=2
         )
-        self.ax.scatter(*self.outliers.T, color="tab:cyan", label="Outliers (class 1)", edgecolors="white", marker="*", s=100, linewidths=0.4, zorder=2)
+        self.ax.scatter(
+            *self.outliers.T,
+            color="tab:cyan",
+            label="Outliers (class 1)",
+            edgecolors="white",
+            marker="*",
+            s=100,
+            linewidths=0.4,
+            zorder=2,
+        )
 
     def _logreg(self):
         logreg = LogisticRegression()
         logreg.fit(self.X, self.y)
         logreg_acc = accuracy_score(self.y, logreg.predict(self.X))
         logreg_err = 1 - logreg_acc
-        self.ax.plot(self.x1_range, self._boundary_line(logreg, self.x1_range), "k-", lw=2, label=f"LogReg  (err={logreg_err:.3f})")
+        self.ax.plot(
+            self.x1_range,
+            self._boundary_line(logreg, self.x1_range),
+            "k-",
+            lw=2,
+            label=f"LogReg  (err={logreg_err:.3f})",
+        )
 
     def _lda(self):
         lda = LinearDiscriminantAnalysis()
         lda.fit(self.X, self.y)
         lda_acc = accuracy_score(self.y, lda.predict(self.X))
         lda_err = 1 - lda_acc
-        self.ax.plot(self.x1_range, self._boundary_line(lda, self.x1_range), "k--", lw=2, label=f"LDA  (err={lda_err:.3f})")
+        self.ax.plot(
+            self.x1_range,
+            self._boundary_line(lda, self.x1_range),
+            "k--",
+            lw=2,
+            label=f"LDA  (err={lda_err:.3f})",
+        )
 
     def _boundary_line(self, model, x1):
         w = model.coef_[0]
         b = model.intercept_[0]
         return -(w[0] * x1 + b) / w[1]
-    
+
     def _cleanup(self):
         self.ax.set_xlim(self.X[:, 0].min() - 0.5, self.X[:, 0].max() + 0.5)
         self.ax.set_ylim(self.X[:, 1].min() - 0.5, self.X[:, 1].max() + 0.5)
