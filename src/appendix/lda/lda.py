@@ -54,11 +54,15 @@ class LDAPlot:
         b = lda.intercept_[0]
         x2_vals = -(w1 * x1_vals + b) / w2
 
-        ax.scatter(*self.X0.T, color=self.color0, label="Class 0", edgecolors="white", linewidths=0.4)
-        ax.scatter(*self.X1.T, color=self.color1, label="Class 1", edgecolors="white", linewidths=0.4)
+        ax.scatter(
+            *self.X0.T, color=self.color0, label="Class 0", edgecolors="white", linewidths=0.4, zorder=2
+        )
+        ax.scatter(
+            *self.X1.T, color=self.color1, label="Class 1", edgecolors="white", linewidths=0.4, zorder=2
+        )
         self._ellipse(ax, self.mean0, self.cov, self.color0)
         self._ellipse(ax, self.mean1, self.cov, self.color1)
-        ax.plot(x1_vals, x2_vals, "k--", linewidth=2)
+        ax.plot(x1_vals, x2_vals, "k--", linewidth=2, zorder=4)
 
         ax.set_xlabel("$x_1$")
         ax.set_ylabel("$x_2$")
@@ -79,11 +83,15 @@ class LDAPlot:
 
         Z = qda.predict(np.c_[xx1.ravel(), xx2.ravel()]).reshape(xx1.shape)
 
-        ax.scatter(*self.X0.T, color=self.color0, label="Class 0", edgecolors="white", linewidths=0.4)
-        ax.scatter(*self.X1.T, color=self.color1, label="Class 1", edgecolors="white", linewidths=0.4)
+        ax.scatter(
+            *self.X0.T, color=self.color0, label="Class 0", edgecolors="white", linewidths=0.4, zorder=2
+        )
+        ax.scatter(
+            *self.X1.T, color=self.color1, label="Class 1", edgecolors="white", linewidths=0.4, zorder=2
+        )
         self._ellipse(ax, self.mean0, qda.covariance_[0], self.color0)
         self._ellipse(ax, self.mean1, qda.covariance_[1], self.color1)
-        ax.contour(xx1, xx2, Z, levels=[0.5], colors="k", linestyles="--", linewidths=2)
+        ax.contour(xx1, xx2, Z, levels=[0.5], colors="k", linestyles="--", linewidths=2, zorder=4)
 
         ax.set_xlabel("$x_1$")
         ax.set_ylabel("$x_2$")
@@ -103,5 +111,6 @@ class LDAPlot:
             angle=theta,
             edgecolor=to_rgba(color, alpha=0.4),
             facecolor=to_rgba(color, alpha=0.2),
+            zorder=3,
         )
         ax.add_patch(ellipse)
