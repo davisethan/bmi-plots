@@ -22,7 +22,7 @@ class GPPlot:
         full = GPy.models.GPClassification(X, y, kernel=GPy.kern.RBF(2))
         full.optimize()
 
-        dtc  = GPy.models.SparseGPClassification(X, y, kernel=GPy.kern.RBF(2), Z=Z)
+        dtc = GPy.models.SparseGPClassification(X, y, kernel=GPy.kern.RBF(2), Z=Z)
         dtc.optimize()
 
         self._plot_gp_classification(full, "Full GP", X, y)
@@ -40,9 +40,7 @@ class GPPlot:
         _, ax = plt.subplots(figsize=(4, 3))
 
         scatter_colors = np.where(y.squeeze() == 1, "tab:red", "tab:blue")
-        cmap = mcolors.LinearSegmentedColormap.from_list(
-            "br", ["tab:blue", "white", "tab:red"]
-        )
+        cmap = mcolors.LinearSegmentedColormap.from_list("br", ["tab:blue", "white", "tab:red"])
 
         mu, _ = model.predict_noiseless(Xgrid)
         prob = model.likelihood.gp_link.transf(mu)
@@ -55,7 +53,9 @@ class GPPlot:
 
         if hasattr(model, "Z"):
             Z = model.Z.values
-            ax.scatter(Z[:, 0], Z[:, 1], marker="x", s=60, c="k", linewidths=1.2, zorder=4, label="inducing pts")
+            ax.scatter(
+                Z[:, 0], Z[:, 1], marker="x", s=60, c="k", linewidths=1.2, zorder=4, label="inducing pts"
+            )
             ax.legend(fontsize=9, loc="upper right")
 
         ax.set_title(name)
