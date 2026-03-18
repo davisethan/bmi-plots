@@ -1,6 +1,8 @@
 # Bayesian Motor Imagery (BMI) Plots
 
-## Conda setup
+## Python Guide
+
+### Conda setup
 
 ```bash
 # Create environment
@@ -25,7 +27,7 @@ conda env export > environment.yml
 conda env create -f environment.yml
 ```
 
-## Environment variables
+### Environment variables
 
 Create `.env` file in root of git repository.
 
@@ -33,7 +35,7 @@ Create `.env` file in root of git repository.
 DATA_PATH=/path/to/data
 ```
 
-## File format & linting
+### File format & linting
 
 ```bash
 # Format files
@@ -47,4 +49,46 @@ ruff check --fix /path/to/software
 
 # Fail if files not linted
 ruff check /path/to/software
+```
+
+## R Guide
+
+### Conda setup
+
+```bash
+# Create environment
+conda create -n analysis -c conda-forge r-base
+```
+
+### Renv project
+
+```bash
+# Enter R shell
+R
+
+# Install renv
+install.packages("renv")
+
+# Create renv
+renv::init()
+
+# Install packages
+install.packages("tidyverse")
+
+# Save renv
+renv::snapshot()
+
+# Exit R shell
+q()
+
+## Recreate renv
+renv::restore()
+```
+
+### File format & linting
+
+```bash
+# Within R shell
+styler::style_dir("/path/to/software")
+lintr::lint_dir("/path/to/software")
 ```
