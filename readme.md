@@ -57,7 +57,7 @@ ruff check /path/to/software
 
 ```bash
 # Create environment
-conda create -n analysis -c conda-forge r-base
+conda create -n stat-plots -c conda-forge r-base
 ```
 
 ### Renv project
