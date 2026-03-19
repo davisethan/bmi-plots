@@ -115,7 +115,7 @@ class Channels:
         df = pd.DataFrame(raw.ch_names, columns=["ch"])
         if ch_names is not None:
             df["orig"] = ch_names
-        df.to_csv(f"{classname}-dev.csv", index=False)
+        df.to_csv(f"{classname}-raw.csv", index=False)
 
     def _save_intersection(self, raw, classname, ch_names=None):
         intersection = set(raw.ch_names) & set(Channels.CHANNELS)
