@@ -44,12 +44,12 @@ plot_arrow <- function(p, rng, text, color) {
 p <- ggplot()
 p <- plot_curve(
   p,
-  c(-2, 1.7), c(-6, 2),
+  c(-2, 1.7), c(-6.4, 2.4),
   c(expression(theta), expression(D[g] == 0))
 )
 p <- plot_curve(
   p,
-  c(2, 1.3), c(-2, 6),
+  c(2, 1.3), c(-1.8, 5.8),
   c(expression(phantom(x)), expression(D[g] == 1))
 )
 p <- plot_arrow(p, c(-2, 2), expression(beta), "steelblue")
