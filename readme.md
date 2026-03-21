@@ -6,25 +6,28 @@
 
 ```bash
 # Create environment
-conda create -n eval-plots python=3.12
+conda create -n evaluation python=3.12
 
 # Delete environment
-conda env remove -n eval-plots
+conda env remove -n evaluation
+
+# Clone environment
+conda create --name new_evaluation --clone evaluation
 
 # List environments
 conda env list
 
 # Activate environment
-conda activate eval-plots
+conda activate evaluation
 
 # Deactivate environment
 conda deactivate
 
 # Save environment
-conda env export > eval-plots.yml
+conda env export > evaluation.yml
 
 # Recreate environment
-conda env create -f eval-plots.yml
+conda env create -f evaluation.yml
 ```
 
 ### Environment variables
@@ -57,7 +60,7 @@ ruff check /path/to/software
 
 ```bash
 # Create environment
-conda create -n stat-plots -c conda-forge r-base
+conda create -n analysis -c conda-forge r-base
 ```
 
 ### Renv project
