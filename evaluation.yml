@@ -1,4 +1,4 @@
-name: bmi-plots
+name: evaluation
 channels:
   - defaults
 dependencies:
@@ -76,4 +76,4 @@ dependencies:
       - threadpoolctl==3.6.0
       - tqdm==4.67.3
       - urllib3==2.6.3
-prefix: /opt/homebrew/Caskroom/miniconda/base/envs/bmi-plots
+prefix: /opt/homebrew/Caskroom/miniconda/base/envs/evaluation

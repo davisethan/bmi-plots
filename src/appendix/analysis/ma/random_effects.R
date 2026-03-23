@@ -5,8 +5,8 @@
 library(ggplot2)
 
 ggplot() +
-  stat_function(fun = dnorm, args = list(mean = -1, sd = 2), xlim = c(-8, 8)) +
-  stat_function(fun = dnorm, args = list(mean = 2, sd = 2), xlim = c(-8, 8)) +
+  stat_function(fun = dnorm, args = list(mean = -1, sd = 2), xlim = c(-6, 4)) +
+  stat_function(fun = dnorm, args = list(mean = 2, sd = 1.7), xlim = c(-3, 7)) +
   annotate(
     "segment",
     x = -1, xend = -1,
@@ -16,12 +16,12 @@ ggplot() +
   annotate(
     "segment",
     x = 2, xend = 2,
-    y = 0, yend = dnorm(2, 2, 2),
+    y = 0, yend = dnorm(2, 2, 1.7),
     linetype = "dashed", color = "slategray"
   ) +
   annotate("text", x = -4, y = -0.03, label = expression(hat(theta)[k]), size = 4) +
-  annotate("text", x = -1, y = -0.03, label = expression(theta[k]), size = 4) +
-  annotate("text", x = 2, y = -0.03, label = expression(mu), size = 4) +
+  annotate("text", x = -1, y = -0.035, label = expression(theta[k]), size = 4) +
+  annotate("text", x = 2, y = -0.035, label = expression(mu), size = 4) +
   annotate(
     "segment",
     x = -3.9, xend = -1.1,
