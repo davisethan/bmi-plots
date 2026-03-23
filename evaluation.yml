@@ -29,6 +29,7 @@ dependencies:
       - cycler==0.12.1
       - cython==3.2.4
       - decorator==5.2.1
+      - docstring-inheritance==3.0.0
       - dotenv==0.9.9
       - edfio==0.4.13
       - edflib-python==1.0.8
@@ -49,8 +50,8 @@ dependencies:
       - memory-profiler==0.61.0
       - mne==1.11.0
       - mne-bids==0.18.0
-      - moabb==1.4.3
-      - numpy==1.26.4
+      - moabb==1.5.0
+      - numpy==2.4.3
       - packaging==26.0
       - pandas==3.0.1
       - paramz==0.9.6
@@ -59,8 +60,11 @@ dependencies:
       - pluggy==1.6.0
       - pooch==1.9.0
       - psutil==7.2.2
+      - pybv==0.7.6
+      - pycountry==26.2.16
       - pyedflib==0.1.42
       - pygments==2.19.2
+      - pymatreader==1.2.2
       - pyparsing==3.3.2
       - pyriemann==0.10
       - pytest==9.0.2
@@ -70,10 +74,12 @@ dependencies:
       - requests==2.32.5
       - ruff==0.15.6
       - scikit-learn==1.8.0
-      - scipy==1.12.0
+      - scipy==1.17.1
       - seaborn==0.13.2
       - six==1.17.0
       - threadpoolctl==3.6.0
       - tqdm==4.67.3
+      - typing-extensions==4.15.0
       - urllib3==2.6.3
+      - xmltodict==1.0.4
 prefix: /opt/homebrew/Caskroom/miniconda/base/envs/evaluation
