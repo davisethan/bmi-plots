@@ -4,7 +4,9 @@
 
 library(ggplot2)
 
-plot_curves <- function(p, rngs, mu, sigma, chars, color) {
+plot_curves <- function(p, rngs, mu, sigma, factor, chars, color) {
+  rngs <- rngs + factor
+  mu <- mu + factor
   p +
     stat_function(fun = dnorm, args = list(mean = mu[2], sd = sigma[1]), xlim = c(rngs[1], rngs[2])) +
     stat_function(fun = dnorm, args = list(mean = mu[3], sd = sigma[2]), xlim = c(rngs[3], rngs[4])) +
@@ -54,6 +56,7 @@ p <- plot_curves(
   c(-9, 3, -5, 5),
   c(-6, -3, 0),
   c(2, 1.5),
+  -2,
   c(
     expression(hat(theta)[r]),
     expression(theta[r]),
@@ -68,6 +71,7 @@ p <- plot_curves(
   c(2, 12, 4, 16),
   c(4, 7, 10),
   c(1.2, 1.7),
+  2,
   c(
     expression(hat(theta)[s]),
     expression(theta[s]),
