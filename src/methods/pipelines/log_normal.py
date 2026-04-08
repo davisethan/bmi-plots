@@ -1,20 +1,26 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import lognorm
 
 
 class LogNormal:
+    def __init__(self):
+        self.mus = [0.0, 0.0, 0.0, 1.0]
+        self.sigmas = [0.5, 1.0, 2.0, 1.0]
+
     def run(self):
-        mus = [0.0, 0.0, 0.0, 1.0]
-        sigmas = [0.5, 1.0, 2.0, 1.0]
+        self.plot()
 
+    def plot(self):
         x = np.linspace(0, 4, 500)
-
         _, ax = plt.subplots(figsize=(6, 4))
 
-        for mu, sigma in zip(mus, sigmas):
+        for mu, sigma in zip(self.mus, self.sigmas):
+            dist = lognorm(s=sigma, scale=np.exp(mu))
+            q_lo, q_hi = dist.ppf([0.025, 0.975])
             y = lognorm.pdf(x, s=sigma, scale=np.exp(mu))
-            ax.plot(x, y, label=f"μ={mu}, σ={sigma}")
+            ax.plot(x, y, label=f"μ={mu}, σ={sigma} (95%CI:{round(q_lo, 2)}-{round(q_hi, 2)})")
 
         ax.set_xlim(0, 4)
         ax.set_ylim(0)
