@@ -4,15 +4,13 @@ from scipy.stats import lognorm
 
 
 class LogNormal:
-    def __init__(self):
-        self.mus = [0.0, 0.0, 0.0, 1.0]
-        self.sigmas = [0.5, 1.0, 2.0, 1.0]
-
     def run(self):
+        mus = [0.0, 0.0, 0.0, 1.0]
+        sigmas = [0.5, 1.0, 2.0, 1.0]
         x = np.linspace(0, 4, 500)
         _, ax = plt.subplots(figsize=(6, 4))
 
-        for mu, sigma in zip(self.mus, self.sigmas):
+        for mu, sigma in zip(mus, sigmas):
             dist = lognorm(s=sigma, scale=np.exp(mu))
             q_lo, q_hi = dist.ppf([0.025, 0.975])
             y = lognorm.pdf(x, s=sigma, scale=np.exp(mu))
