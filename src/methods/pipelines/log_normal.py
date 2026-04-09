@@ -9,9 +9,6 @@ class LogNormal:
         self.sigmas = [0.5, 1.0, 2.0, 1.0]
 
     def run(self):
-        self.plot()
-
-    def plot(self):
         x = np.linspace(0, 4, 500)
         _, ax = plt.subplots(figsize=(6, 4))
 
