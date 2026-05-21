@@ -6,7 +6,9 @@ from sklearn.gaussian_process.kernels import RBF
 
 class UncertaintyPlot:
     def run(self):
-        X_train = np.array([0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0]).reshape(-1, 1)
+        X_train = np.array(
+            [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0]
+        ).reshape(-1, 1)
         y_train = np.cos(X_train.ravel()) * 1.5
         X_pred = np.linspace(0.5, 9.0, 300).reshape(-1, 1)
 
@@ -33,10 +35,7 @@ class UncertaintyPlot:
         # Plot Gaussian process estimate
         axes[1].plot(X_pred, y_mean, color="blue", linewidth=2)
         axes[1].fill_between(
-            X_pred.ravel(),
-            y_mean - 1.96 * y_std,
-            y_mean + 1.96 * y_std,
-            color="blue", alpha=0.2
+            X_pred.ravel(), y_mean - 1.96 * y_std, y_mean + 1.96 * y_std, color="blue", alpha=0.2
         )
         axes[1].scatter(X_train, y_train, marker="x", color="black", s=80, zorder=5)
         axes[1].set_title("Prediction with uncertainty", fontsize=14)
