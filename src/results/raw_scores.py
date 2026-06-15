@@ -33,12 +33,13 @@ class RawScores:
             label="Bayesian",
         )
         if marker is not None:
-            ax.axvline(x=marker, color="black", linestyle="--", linewidth=1.2, label="Null")
+            ax.axvline(x=marker, color="black", linestyle="--", linewidth=1.5, label="Null")
 
-        ax.set_xlabel("Value")
-        ax.set_ylabel("Density")
-        ax.set_title(f"Overlapping Distributions: {metric}")
-        ax.legend()
+        ax.set_xlabel("Value", fontsize=12)
+        ax.set_ylabel("Density", fontsize=12)
+        ax.tick_params(axis='both', labelsize=12)
+        ax.set_title(f"{metric} Histograms", fontsize=14, fontweight="bold")
+        ax.legend(fontsize=12)
 
         plt.tight_layout()
         plt.savefig(output_file)
@@ -50,7 +51,7 @@ class RawScores:
             np.array([3.0, 21.0, 42.0, 45.0, 9.0]),
             0.5,
             "AUROC",
-            "raw_scores_auroc.png",
+            "auroc.png",
         )
         yield (
             np.array([-0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]),
@@ -58,7 +59,7 @@ class RawScores:
             np.array([4.0, 14.0, 16.0, 35.0, 37.0, 12.0, 2.0]),
             0,
             "MCC",
-            "raw_scores_mcc.png",
+            "mcc.png",
         )
         yield (
             np.array([0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7]),
@@ -66,15 +67,15 @@ class RawScores:
             np.array([0.0, 92.0, 26.0, 2.0, 0.0, 0.0, 0.0]),
             0.7,
             "NLL",
-            "raw_scores_nll.png",
+            "nll.png",
         )
         yield (
             np.array([0.16, 0.19, 0.22, 0.25, 0.28, 0.31, 0.34]),
             np.array([7.0, 24.0, 57.0, 25.0, 5.0, 2.0]),
             np.array([6.0, 31.0, 64.0, 18.0, 1.0, 0.0]),
             0.25,
-            "Brier score",
-            "raw_scores_brier.png",
+            "BS",
+            "brier.png",
         )
         yield (
             np.array([0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3]),
@@ -82,7 +83,7 @@ class RawScores:
             np.array([13.0, 43.0, 37.0, 24.0, 3.0, 0.0]),
             None,
             "ECE",
-            "raw_scores_ece.png",
+            "ece.png",
         )
         yield (
             np.array([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]),
@@ -90,5 +91,5 @@ class RawScores:
             np.array([6.0, 16.0, 32.0, 42.0, 22.0, 2.0, 0.0]),
             None,
             "MCE",
-            "raw_scores_mce.png",
+            "mce.png",
         )
